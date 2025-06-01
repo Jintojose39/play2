@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       target_branch:
-        description: 'Branch to run tests on (e.g., main, dev, feature/test)'
+        description: 'Enter branch name to run tests on'
         required: true
-        default: 'main'
+        default: 'master'
 
 jobs:
   test:
@@ -14,10 +14,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Show target branch
+        run: |
+          echo "Running tests on branch: ${{ inputs.target_branch }}"
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.target_branch }}
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
