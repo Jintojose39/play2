@@ -13,18 +13,23 @@ test.describe("SauceDemo Order Flow", () => {
   });
 
   test("Add product to cart", async ({ page }) => {
+    //await page.locator(`.inventory_item_label`).filter({hasText:"Sauce Labs Backpack"}).locator(`//button[text()="Add to cart"]`).click();
     await page.locator('(//button[text()="Add to cart"])[1]').click();
     await expect(page.locator(".shopping_cart_badge")).toHaveText("1");
   });
 
   test("Proceed to checkout", async ({ page }) => {
     await page.locator('(//button[text()="Add to cart"])[1]').click();
+    //await page.locator(`.inventory_item_name`).filter({hasText:"Sauce Labs Backpack"}).getByRole("button",{name:"Add to cart"}).click();
+   // await page.locator(`.inventory_item_label`).filter({hasText:"Sauce Labs Backpack"}).locator(`//button[text()="Add to cart"]`).click();
     await page.locator(".shopping_cart_badge").click();
     await page.locator("#checkout").click();
   });
 
   test("Enter shipping information", async ({ page }) => {
     await page.locator('(//button[text()="Add to cart"])[1]').click();
+    //await page.locator(`.inventory_item_label`).filter({hasText:"Sauce Labs Backpack"}).locator(`//button[text()="Add to cart"]`).click();
+   // await page.locator(`.inventory_item_name`).filter({hasText:"Sauce Labs Backpack"}).getByRole("button",{name:"Add to cart"}).click();
     await page.locator(".shopping_cart_badge").click();
     const priceText = await page.locator('.inventory_item_price').textContent();
     await page.locator("#checkout").click();
@@ -32,12 +37,13 @@ test.describe("SauceDemo Order Flow", () => {
     await page.locator("#last-name").fill("Jose");
     await page.locator("#postal-code").fill("1234");
     await page.locator("#continue").click();
-    await page.locator(".summary_subtotal_label").to
     await expect(page.locator(".summary_subtotal_label")).toContainText(priceText);
   });
 
   test("Complete the order", async ({ page }) => {
+
     await page.locator('(//button[text()="Add to cart"])[1]').click();
+    //await page.locator(`.inventory_item_label`).filter({hasText:"Sauce Labs Backpack"}).locator(`//button[text()="Add to cart"]`).click();
     await page.locator(".shopping_cart_badge").click();
     await page.locator("#checkout").click();
     await page.locator("#first-name").fill("Jinto");
@@ -49,7 +55,8 @@ test.describe("SauceDemo Order Flow", () => {
   });
 
   test("Logout after order", async ({ page }) => {
-    await page.locator('(//button[text()="Add to cart"])[1]').click();
+   await page.locator('(//button[text()="Add to cart"])[1]').click();
+    //await page.locator(`.inventory_item_label`).filter({hasText:"Sauce Labs Backpack"}).locator(`//button[text()="Add to cart"]`).click();
     await page.locator(".shopping_cart_badge").click();
     await page.locator("#checkout").click();
     await page.locator("#first-name").fill("Jinto");
