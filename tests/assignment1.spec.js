@@ -13,8 +13,8 @@ test.describe("SauceDemo Order Flow", () => {
   });
 
   test("Add product to cart", async ({ page }) => {
-    //await page.locator(`.inventory_item_label`).filter({hasText:"Sauce Labs Backpack"}).locator(`//button[text()="Add to cart"]`).click();
-    await page.locator('(//button[text()="Add to cart"])[1]').click();
+    page.locator(`.inventory_item_label`).filter({hasText:"Sauce Labs Bike Light"})
+    await page.locator(`(//button[text()="Add to cart"])[1]`).click();
     await expect(page.locator(".shopping_cart_badge")).toHaveText("1");
   });
 

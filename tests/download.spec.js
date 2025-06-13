@@ -17,4 +17,9 @@ test("Handling download file", async ({ page }) => {
   await download[0].saveAs(fileName);
   const fileExists = fs.existsSync(fileName);
   expect(fileExists).toBe(true);
+
+  if (fileExists) {
+     fs.unlinkSync(fileName);
+     console.log(`🧹 Cleaned up downloaded file: ${fileName}`);
+   }
 });
