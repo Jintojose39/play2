@@ -11,7 +11,7 @@ test("Handling multiple tabs/windows", async ({ page }) => {
   await expect(tabs[0]).toHaveURL(/testautomationpractice/);
   await expect(tabs[1]).toHaveURL("https://www.selenium.dev/");
   await expect(tabs[2]).toHaveURL("https://playwright.dev/");
-  await tabs[0].locator("").click();
+  //await tabs[0].locator("").click();
   await tabs[0].close();
   await tabs[1].context().close();
 });
