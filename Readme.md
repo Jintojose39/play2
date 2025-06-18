@@ -9,15 +9,23 @@
 
 | Area explored | Example file/folder | Status |
 |---------------|--------------------|--------|
-| Basic page interactions (locators, waits) | `tests/01-basic-locators.spec.ts` | ✅ |
-| Dropdowns (native & custom) | `tests/02-dropdowns.spec.ts` | 🔄 |
-| File upload/download | `tests/03-file-upload-download.spec.ts` | 🔄 |
-| Frames & iframes | `tests/04-frames.spec.ts` | 🔄 |
-| Multi‑tab / multi‑window flows | `tests/05-windows.spec.ts` | 🕗 |
-| Dynamic tables | `tests/06-tables.spec.ts` | 🕗 |
-| Test annotations & tagging | `tests/@smoke,@regression` | ✅ |
-| Reporting experiments (Allure, HTML) | `utils/reporting/` | 🔄 |
-| CI experiments (GitHub Actions) | `.github/workflows/learning.yml` | 🕗 |
+| Basic page interactions (locators, waits) | `\tests\UIBasics.spec.js` | ✅ |
+| Dropdowns (native & custom) | `\tests\variables.spec.js` | ✅ |
+| File upload/download | `\tests\upload.spec.js` | ✅ |
+| Frames & iframes | `\tests\frames.spec.js` |  ✅ |
+| Multi‑tab / multi‑window flows | `\tests\multiTab.spec.js` | ✅ |
+| Dynamic tables | `\tests\tableFilter.spec.js` | ✅ |
+| Tagging | `\tests\tags.spec.js` | ✅ |
+| Annotations | `\tests\annotations.spec.js` | ✅ |
+| Reporting experiments (Allure, HTML) | `utils/reporting/` | ✅ |
+| Web Elements | `\tests\webElements.spec.js` | ✅ |
+| Date Picker | `\tests\datepicker3.spec.js` | ✅ |
+| E2E Assignement | `\tests\assignment1.spec.js` | ✅ |
+| Alerts | `\tests\alert.spec.js` | ✅ |
+| Special Locators | `\tests\specialLocators.spec.js` | ✅ |
+| Mouse Actions | `\tests\mouse.spec.js` | ✅ |
+| API with Playwright | `\tests\api.spec.js` | 🔄 |
+| CI experiments (GitHub Actions) | `.github/workflows/learning.yml` | 🔄 |
 
 Legend: ✅ done 🔄 in‑progress 🕗 planned
 
