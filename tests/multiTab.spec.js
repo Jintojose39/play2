@@ -33,7 +33,7 @@ test("Running in multiple tabs", async () => {
   await expect(page).toHaveURL("https://www.google.com/");
 });
 
-test("Running in multiple windows with multiple windows like Chromium , Firefox", async () => {
+test("Running in multiple windows with multiple browsers like Chromium , Firefox", async () => {
   const browser1 = await chromium.launch();
   const browser2 = await firefox.launch();
   const context1 = await browser1.newContext();
