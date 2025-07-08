@@ -1,0 +1,22 @@
+[{
+     "sauceDemoUrl":"https://www.saucedemo.com/inventory.html",
+     "productName":"Sauce Labs Bike Light",
+     "productCount":"1",
+     "CheckoutTitle" :"Checkout: Your Information",
+     "firstName":"jinto",
+     "lastName":"jose",
+     "postalCode":"12455",
+     "orderConfirmMessage":"Thank you for your order!"
+},
+
+{
+     "sauceDemoUrl":"https://www.saucedemo.com/inventory.html",
+     "productName":"Sauce Labs Bike Light",
+     "productCount":"1",
+     "CheckoutTitle" :"Checkout: Your Information",
+     "firstName":"jinto",
+     "lastName":"jose",
+     "postalCode":"12455",
+     "orderConfirmMessage":"Thank you for your order!"
+}
+]
