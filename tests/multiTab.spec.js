@@ -11,7 +11,7 @@ test("Handling multiple tabs/windows", async ({ page }) => {
   await expect(tabs[0]).toHaveURL(/testautomationpractice/);
   await expect(tabs[1]).toHaveURL("https://www.selenium.dev/");
   await expect(tabs[2]).toHaveURL("https://playwright.dev/");
-  await tabs[0].locator("").click();
+  //await tabs[0].locator("").click();
   await tabs[0].close();
   await tabs[1].context().close();
 });
@@ -33,7 +33,7 @@ test("Running in multiple tabs", async () => {
   await expect(page).toHaveURL("https://www.google.com/");
 });
 
-test("Running in multiple windows with multiple windows like Chromium , Firefox", async () => {
+test("Running in multiple windows with multiple browsers like Chromium , Firefox", async () => {
   const browser1 = await chromium.launch();
   const browser2 = await firefox.launch();
   const context1 = await browser1.newContext();
