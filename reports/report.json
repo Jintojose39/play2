@@ -10,16 +10,24 @@
         "name": "Add a product to the cart and verify cart count",
         "steps": [
           {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 926400
+            }
+          },
+          {
             "arguments": [],
-            "keyword": "When ",
+            "keyword": "Given ",
             "line": 5,
-            "name": "the user navigates to the home page",
+            "name": "the user navigates to the home page with \"standard_user\"",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:34"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:17"
             },
             "result": {
               "status": "passed",
-              "duration": 24023600
+              "duration": 4555935599
             }
           },
           {
@@ -28,11 +36,11 @@
             "line": 6,
             "name": "the user adds \"Sauce Labs Backpack\" to the cart",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:38"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:25"
             },
             "result": {
               "status": "passed",
-              "duration": 132183100
+              "duration": 114024000
             }
           },
           {
@@ -41,11 +49,19 @@
             "line": 7,
             "name": "the cart count should be \"1\"",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:44"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 9748800
+              "duration": 3918900
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 150500
             }
           }
         ],
@@ -60,16 +76,24 @@
         "name": "Proceed to checkout and verify page title",
         "steps": [
           {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 58300
+            }
+          },
+          {
             "arguments": [],
             "keyword": "When ",
             "line": 10,
             "name": "the user clicks on the cart badge",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:48"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:35"
             },
             "result": {
               "status": "passed",
-              "duration": 52523199
+              "duration": 60157900
             }
           },
           {
@@ -78,11 +102,11 @@
             "line": 11,
             "name": "the user proceeds to checkout",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:52"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:39"
             },
             "result": {
               "status": "passed",
-              "duration": 96698499
+              "duration": 55837599
             }
           },
           {
@@ -91,11 +115,19 @@
             "line": 12,
             "name": "the checkout title should be \"Checkout: Your Information\"",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:57"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:44"
             },
             "result": {
               "status": "passed",
-              "duration": 8186699
+              "duration": 6258600
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 228399
             }
           }
         ],
@@ -109,6 +141,14 @@
         "line": 14,
         "name": "Fill shipping information and verify price",
         "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 159899
+            }
+          },
           {
             "arguments": [
               {
@@ -138,11 +178,11 @@
             "line": 15,
             "name": "the user enters the shipping details",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:61"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 129830100
+              "duration": 149297899
             }
           },
           {
@@ -151,11 +191,19 @@
             "line": 19,
             "name": "the product price should match the selected item",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:70"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:55"
             },
             "result": {
               "status": "passed",
-              "duration": 11138400
+              "duration": 4618199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 276900
             }
           }
         ],
@@ -170,16 +218,24 @@
         "name": "Complete the order and verify confirmation",
         "steps": [
           {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 94500
+            }
+          },
+          {
             "arguments": [],
             "keyword": "When ",
             "line": 22,
             "name": "the user clicks on the finish button",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:74"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:59"
             },
             "result": {
               "status": "passed",
-              "duration": 66197399
+              "duration": 53395499
             }
           },
           {
@@ -188,11 +244,19 @@
             "line": 23,
             "name": "the user should see the confirmation message \"Thank you for your order!\"",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:78"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:63"
             },
             "result": {
               "status": "passed",
-              "duration": 10433199
+              "duration": 3971999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 73199
             }
           }
         ],
@@ -207,16 +271,24 @@
         "name": "Logout from application",
         "steps": [
           {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 71300
+            }
+          },
+          {
             "arguments": [],
             "keyword": "When ",
             "line": 26,
             "name": "the user logs out",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:82"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 1006670300
+              "duration": 968091500
             }
           },
           {
@@ -225,11 +297,19 @@
             "line": 27,
             "name": "the user should be navigated to the login page",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:86"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:71"
             },
             "result": {
               "status": "passed",
-              "duration": 5057500
+              "duration": 4223199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 156200
             }
           }
         ],

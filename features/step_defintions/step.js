@@ -1,89 +1,83 @@
-import { Given, When, Then, BeforeAll, AfterAll, setDefaultTimeout } from '@cucumber/cucumber';
-import { chromium, expect } from '@playwright/test';
-import { POManager } from '../../utils/POManager.js';
-import env from '../../testData/env.json' assert { type: 'json' };
-import loginCredentials from '../../testData/loginCredentials.json' assert { type: 'json' };
-import testData from '../../testData/testData.json' assert { type: 'json' };
-
-let browser;
-let context;
-let page;
-let po;
-let priceText;
-let productName;
+import { Given, When, Then, setDefaultTimeout } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
+import env from "../../testData/env.json" assert { type: "json" };
+import loginCredentials from "../../testData/loginCredentials.json" assert { type: "json" };
+import testData from "../../testData/testData.json" assert { type: "json" };
 
 setDefaultTimeout(60 * 1000);
 
-BeforeAll(async () => {
-  browser = await chromium.launch();
-  context = await browser.newContext();
-  page = await context.newPage();
-  po = new POManager(page);
+let priceText = "";
+let productName = "";
 
-  await po.getLoginPage().goToApplication(env.baseURL);
-  await po.getLoginPage().enterTheCredentials(
-    loginCredentials.userName,
-    loginCredentials.password
-  );
-});
+Given(
+  "the user navigates to the home page with {string}",
+  async function (username) {
+    await this.po.getLoginPage().goToApplication(env.baseURL);
+    await this.po
+      .getLoginPage()
+      .enterTheCredentials(
+        loginCredentials.userName,
+        loginCredentials.password
+      );
+    await expect(this.page).toHaveURL(testData.sauceDemoUrl);
+  }
+);
 
-AfterAll(async () => {
-  await browser.close();
-});
-
-When('the user navigates to the home page', async () => {
-  await expect(page).toHaveURL(testData.sauceDemoUrl);
-});
-
-When('the user adds {string} to the cart', async (product) => {
+When("the user adds {string} to the cart", async function (product) {
   productName = product;
-  await po.getCommonPage().click(po.getCartPage().productClick);
-  await po.getCommonPage().click(po.getCartPage().addToCartButton);
+  await this.po.getCommonPage().click(this.po.getCartPage().productClick);
+  await this.po.getCommonPage().click(this.po.getCartPage().addToCartButton);
 });
 
-Then('the cart count should be {string}', async (expectedCount) => {
-  await expect(po.getCommonPage().cartCount).toHaveText(expectedCount);
+Then("the cart count should be {string}", async function (expectedCount) {
+  await expect(this.po.getCommonPage().cartCount).toHaveText(expectedCount);
 });
 
-When('the user clicks on the cart badge', async () => {
-  await po.getCommonPage().cartCount.click();
+When("the user clicks on the cart badge", async function () {
+  await this.po.getCommonPage().cartCount.click();
 });
 
-When('the user proceeds to checkout', async () => {
-  priceText = await po.getCheckOutPage().productPrice.textContent();
-  await po.getCommonPage().click(po.getCheckOutPage().checkOutButton);
+When("the user proceeds to checkout", async function () {
+  priceText = await this.po.getCheckOutPage().productPrice.textContent();
+  await this.po.getCommonPage().click(this.po.getCheckOutPage().checkOutButton);
 });
 
-Then('the checkout title should be {string}', async (expectedTitle) => {
-  await expect(po.getCheckOutPage().checkoutTitle).toHaveText(expectedTitle);
-});
-
-When('the user enters the shipping details', async function (dataTable) {
-  const data = dataTable.rowsHash();
-  await po.getOrderPage().toFillTheShippingDetails(
-    data.firstName,
-    data.lastName,
-    data.postalCode
+Then("the checkout title should be {string}", async function (expectedTitle) {
+  await expect(this.po.getCheckOutPage().checkoutTitle).toHaveText(
+    expectedTitle
   );
 });
 
-Then('the product price should match the selected item', async () => {
-  await expect(po.getOrderPage().orderSummaryPrice).toContainText(priceText);
+When("the user enters the shipping details", async function (dataTable) {
+  const data = dataTable.rowsHash();
+  await this.po
+    .getOrderPage()
+    .toFillTheShippingDetails(data.firstName, data.lastName, data.postalCode);
 });
 
-When('the user clicks on the finish button', async () => {
-  await po.getCommonPage().click(po.getOrderPage().finish);
+Then("the product price should match the selected item", async function () {
+  await expect(this.po.getOrderPage().orderSummaryPrice).toContainText(
+    priceText
+  );
 });
 
-Then('the user should see the confirmation message {string}', async (expectedMessage) => {
-  await expect(po.getOrderPage().orderCompleteMessage).toHaveText(expectedMessage);
+When("the user clicks on the finish button", async function () {
+  await this.po.getCommonPage().click(this.po.getOrderPage().finish);
 });
 
-When('the user logs out', async () => {
-  await po.getLoginPage().logOutFromApplication();
+Then(
+  "the user should see the confirmation message {string}",
+  async function (expectedMessage) {
+    await expect(this.po.getOrderPage().orderCompleteMessage).toHaveText(
+      expectedMessage
+    );
+  }
+);
+
+When("the user logs out", async function () {
+  await this.po.getLoginPage().logOutFromApplication();
 });
 
-Then('the user should be navigated to the login page', async () => {
-  await expect(page).toHaveURL(env.baseURL);
+Then("the user should be navigated to the login page", async function () {
+  await expect(this.page).toHaveURL(env.baseURL);
 });
-

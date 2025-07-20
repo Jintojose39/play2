@@ -2,7 +2,7 @@ Feature: SauceDemo E2E Product Order Flow
 
 
   Scenario: Add a product to the cart and verify cart count
-    When the user navigates to the home page
+    Given the user navigates to the home page with "standard_user"
     And the user adds "Sauce Labs Backpack" to the cart
     Then the cart count should be "1"
 
