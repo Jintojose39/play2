@@ -45,6 +45,7 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
+      trace :'retain-on-first-failure'
        }
     },
 
