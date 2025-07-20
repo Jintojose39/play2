@@ -1,4 +1,4 @@
-import { CommonPage } from "./CommonPage";
+import { CommonPage } from "./CommonPage.js";
 class CheckOutPage extends CommonPage {
     constructor(page){
       super(page);
