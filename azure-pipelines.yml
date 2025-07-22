@@ -1,18 +1,19 @@
 trigger:
   branches:
     include:
-      - PlayWrightLearn
+      - PlayWrightLearn  # Triggers only on changes to this branch
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: Default  # Uses your self-hosted agent pool
 
 steps:
-  - checkout: self
-
   - task: NodeTool@0
     inputs:
-      versionSpec: '18.x'
+      versionSpec: 'lts/*'
     displayName: 'Install Node.js'
+
+  - checkout: self
+    clean: true
 
   - script: |
       npm ci
@@ -23,12 +24,12 @@ steps:
     displayName: 'Install Playwright Browsers'
 
   - script: |
-      npx playwright test --reporter=html
-    displayName: 'Run Playwright tests and generate report'
+      npx playwright test --reporter=html --verbose
+    displayName: 'Run Playwright Tests'
 
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: 'playwright-report'
-      artifact: 'playwright-html-report'
+      artifactName: 'playwright-html-report'
       publishLocation: 'pipeline'
-    displayName: 'Upload HTML Report'
+    displayName: '📦 Upload Playwright HTML Report'
