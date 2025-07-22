@@ -5,10 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean-report": "del /f /q reports\\*.*",
-    "test": "npm run clean-report && cucumber-js --format json:reports/report.json",
-    "report": "node generate-report.js",
-    "test:with-report": "npm run test && npm run report"
+  "clean-report": "rimraf reports/*",
+  "test": "npm run clean-report && cucumber-js --format json:reports/report.json",
+  "report": "node generate-report.js",
+  "test:with-report": "npm run test && npm run report"
   },
   "keywords": [],
   "author": "",
