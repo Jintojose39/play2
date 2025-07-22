@@ -10,7 +10,8 @@ jobs:
 
     steps:
       - name: Show current branch
-        run: echo "Running tests on branch: ${{ github.ref_name }}"
+        run: |
+          echo "Running tests on branch: ${{ github.ref_name }}"
 
       - name: Checkout repository
         uses: actions/checkout@v4
