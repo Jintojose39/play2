@@ -5,16 +5,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "clean-report": "del /f /q reports\\*.*",
-  "test": "npm run clean-report && cucumber-js --format json:reports/report.json",
-  "report": "node generate-report.js",
-  "test:with-report": "npm run test && npm run report"
+    "clean-report": "del /f /q reports\\*.*",
+    "test": "npm run clean-report && cucumber-js --format json:reports/report.json",
+    "report": "node generate-report.js",
+    "test:with-report": "npm run test && npm run report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@applitools/eyes-playwright": "^1.38.0",
+    "@azure/microsoft-playwright-testing": "^1.0.0-beta.7",
     "@playwright/test": "^1.54.1",
     "cucumber-html-reporter": "^7.2.0",
     "dotenv": "^17.2.0",

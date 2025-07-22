@@ -3,8 +3,8 @@
 
 import { expect, test, chromium } from "@playwright/test";
 import { POManager } from "../utils/POManager";
-import env from "../testData/env.json";
-import loginCredentials from "../testData/loginCredentials.json"
+import env from "../testData/env.json"  assert { type: "json" };
+import loginCredentials from "../testData/loginCredentials.json"   assert { type: "json" };
 
 test.describe("SauceDemo Order E2E Flow", () => {
 

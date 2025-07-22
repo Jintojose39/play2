@@ -1,60 +1,74 @@
-import { test, expect } from "@playwright/test";
-import fs from "fs";
-import path from "path";
+import { test, expect } from '@playwright/test';
+import fs from 'fs';
+import path from 'path';
+import ExcelJS from 'exceljs';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-const ExcelJs = require("exceljs");
-const workbook = new ExcelJs.Workbook();
+// Equivalent of __dirname in ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
+// Excel workbook instance
+const workbook = new ExcelJS.Workbook();
+
+// Utility function to read and write Excel
 async function readAndWriteExcel(filePath, searchValue, replaceValue) {
   let targetRow;
   let targetCol;
+
   await workbook.xlsx.readFile(filePath);
-  const worksheet = workbook.getWorksheet("Sheet1");
+  const worksheet = workbook.getWorksheet('Sheet1');
 
   worksheet.eachRow((row, rowNumber) => {
     row.eachCell((cell, colNumber) => {
       if (cell.value === searchValue) {
         targetRow = rowNumber;
         targetCol = colNumber;
-        console.log(rowNumber);
-        console.log(colNumber);
+        console.log('Match at row:', rowNumber, 'col:', colNumber);
       }
-      //console.log(cell.value);
     });
   });
+
   const cell = worksheet.getCell(targetRow, targetCol);
   cell.value = replaceValue;
+
   await workbook.xlsx.writeFile(filePath);
 }
 
-test("Handling upload and Download", async ({ page }) => {
-  await page.goto(
-    "https://rahulshettyacademy.com/upload-download-test/index.html"
-  );
-  // Wait for the download to start
+test('Handling upload and download with Excel modification', async ({ page }) => {
+  await page.goto('https://rahulshettyacademy.com/upload-download-test/index.html');
+
+  // Trigger download and wait for it
   const [download] = await Promise.all([
-    page.waitForEvent("download"),
-    page.getByRole("button", { name: "Download" }).click(),
+    page.waitForEvent('download'),
+    page.getByRole('button', { name: 'Download' }).click(),
   ]);
 
-  // Create download folder if not exists
-  const downloadDir = path.join(__dirname, "..", "downloads");
+  // Create downloads directory
+  const downloadDir = path.join(__dirname, '..', 'downloads');
   if (!fs.existsSync(downloadDir)) {
-    fs.mkdirSync(downloadDir);
+    fs.mkdirSync(downloadDir, { recursive: true });
   }
 
-  // Save file to your framework folder
+  // Save downloaded file
   const savePath = path.join(downloadDir, await download.suggestedFilename());
   await download.saveAs(savePath);
-  console.log("Downloaded file saved to:", savePath);
-  await readAndWriteExcel(savePath, "Mango", "Melon");
+  console.log('Downloaded file saved to:', savePath);
+
+  // Modify Excel file
+  await readAndWriteExcel(savePath, 'Mango', 'Melon');
+
+  // Upload modified file
   const input = page.locator('input.upload[type="file"]');
   await input.setInputFiles(savePath);
 
-  // If nothing reflects, try forcing a change event
+  // Dispatch change event (to trigger UI update)
   await input.evaluate((el) => {
-    const event = new Event("change", { bubbles: true });
+    const event = new Event('change', { bubbles: true });
     el.dispatchEvent(event);
   });
-  await expect(page.getByText("Melon")).toHaveText("Melon");
+
+  // Verify the updated value appears
+  await expect(page.getByText('Melon')).toHaveText('Melon');
 });

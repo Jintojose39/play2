@@ -1,8 +1,9 @@
-import { expect, test, chromium ,request } from "@playwright/test";
-import { POManager } from "../utils/POManager";
-import env from "../testData/env.json";
-import loginCredentials from "../testData/loginCredentials.json";
-import testData from "../testData/testData.json";
+import { expect, test, chromium, request } from '@playwright/test';
+import { POManager } from '../utils/POManager.js'; // Add .js if using ESM
+import env from '../testData/env.json' assert { type: 'json' };
+import loginCredentials from '../testData/loginCredentials.json' assert { type: 'json' };
+import testData from '../testData/testData.json' assert { type: 'json' };
+
 
 test.describe.serial("SauceDemo Order E2E Flow", () => {
   let browser;
