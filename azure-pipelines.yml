@@ -1,35 +1,43 @@
 trigger:
   branches:
     include:
-      - PlayWrightLearn  # Triggers only on changes to this branch
+      - PlayWrightLearn
 
 pool:
-  name: Default  # Uses your self-hosted agent pool
+  vmImage: 'windows-latest'
 
 steps:
+  - checkout: self
+
   - task: NodeTool@0
     inputs:
-      versionSpec: 'lts/*'
+      versionSpec: '18.x'
     displayName: 'Install Node.js'
 
-  - checkout: self
-    clean: true
-
-  - script: |
-      npm ci
+  - task: PowerShell@2
     displayName: 'Install dependencies'
+    inputs:
+      targetType: 'inline'
+      script: |
+        npm ci
 
-  - script: |
-      npx playwright install --with-deps
+  - task: PowerShell@2
     displayName: 'Install Playwright Browsers'
+    inputs:
+      targetType: 'inline'
+      script: |
+        npx playwright install --with-deps
 
-  - script: |
-      npx playwright test --reporter=html --verbose
+  - task: PowerShell@2
     displayName: 'Run Playwright Tests'
+    inputs:
+      targetType: 'inline'
+      script: |
+        npx playwright test --reporter=html
 
   - task: PublishPipelineArtifact@1
+    displayName: 'Publish Playwright HTML Report'
     inputs:
       targetPath: 'playwright-report'
-      artifactName: 'playwright-html-report'
+      artifact: 'playwright-html-report'
       publishLocation: 'pipeline'
-    displayName: '📦 Upload Playwright HTML Report'
