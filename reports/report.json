@@ -1,0 +1,327 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "saucedemo-e2e-product-order-flow;add-a-product-to-the-cart-and-verify-cart-count",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "Add a product to the cart and verify cart count",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 926400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "the user navigates to the home page with \"standard_user\"",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4555935599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "the user adds \"Sauce Labs Backpack\" to the cart",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 114024000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "the cart count should be \"1\"",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3918900
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 150500
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "saucedemo-e2e-product-order-flow;proceed-to-checkout-and-verify-page-title",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Proceed to checkout and verify page title",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 58300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "the user clicks on the cart badge",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60157900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "the user proceeds to checkout",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:39"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55837599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "the checkout title should be \"Checkout: Your Information\"",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6258600
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 228399
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "saucedemo-e2e-product-order-flow;fill-shipping-information-and-verify-price",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "Fill shipping information and verify price",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 159899
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "firstName",
+                      "John"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "lastName",
+                      "Doe"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "postalCode",
+                      "12345"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 15,
+            "name": "the user enters the shipping details",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:48"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 149297899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "the product price should match the selected item",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:55"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4618199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 276900
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "saucedemo-e2e-product-order-flow;complete-the-order-and-verify-confirmation",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "Complete the order and verify confirmation",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 94500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 22,
+            "name": "the user clicks on the finish button",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:59"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 53395499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "the user should see the confirmation message \"Thank you for your order!\"",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3971999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 73199
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "saucedemo-e2e-product-order-flow;logout-from-application",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "Logout from application",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 71300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "the user logs out",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:67"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 968091500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "the user should be navigated to the login page",
+            "match": {
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:71"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4223199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 156200
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "saucedemo-e2e-product-order-flow",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "SauceDemo E2E Product Order Flow",
+    "tags": [],
+    "uri": "features\\Ecommerce.feature"
+  }
+]

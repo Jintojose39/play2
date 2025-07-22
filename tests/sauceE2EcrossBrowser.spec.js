@@ -1,8 +1,9 @@
-import { expect, test, chromium } from "@playwright/test";
-import { POManager } from "../utils/POManager";
-import env from "../testData/env.json";
-import loginCredentials from "../testData/loginCredentials.json";
-import testData from "../testData/testData2.json";
+import { expect, test, chromium } from '@playwright/test';
+import { POManager } from '../utils/POManager.js';
+import env from '../testData/env.json' assert { type: 'json' };
+import loginCredentials from '../testData/loginCredentials.json' assert { type: 'json' };
+import testData from '../testData/testData2.json' assert { type: 'json' };
+
 
 testData.forEach((user, index) => {
 test.describe.serial(`SauceDemo Order E2E Flow :${user.productName,index+1}`, () => {
