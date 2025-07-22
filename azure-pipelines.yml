@@ -1,0 +1,40 @@
+trigger:
+  branches:
+    include:
+      - PlayWrightLearn
+      - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  node_version: '18.x'
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: $(node_version)
+    displayName: 'Use Node.js $(node_version)'
+
+  - task: Checkout@1
+    displayName: 'Checkout code'
+
+  - script: npm ci
+    displayName: 'Install dependencies'
+
+  - script: npx playwright install --with-deps
+    displayName: 'Install Playwright Browsers'
+
+  - script: |
+      echo "Running Playwright tests"
+      npx playwright test --reporter=html
+    displayName: 'Run Playwright Tests and Generate HTML Report'
+    continueOnError: true
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: 'playwright-report'
+      artifact: 'playwright-html-report'
+      publishLocation: 'pipeline'
+    condition: always()
+    displayName: 'Publish HTML Report'
