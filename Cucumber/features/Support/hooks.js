@@ -1,6 +1,6 @@
 import { BeforeAll, AfterAll, Before, After } from "@cucumber/cucumber";
 import { chromium } from "@playwright/test";
-import { POManager } from "../../utils/POManager.js";
+import { POManager } from "../../../utils/POManager.js";
 
 let browser;
 let context;
