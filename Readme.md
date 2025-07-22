@@ -120,33 +120,33 @@ CI is triggered on every push and PR.
 
 Path: .github/workflows/playwright.yml
 
-name: Playwright Tests
+# name: Playwright Tests
 
-on: [push, pull_request]
+# on: [push, pull_request]
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '18'
 
-      - name: Install dependencies
-        run: npm ci
+#       - name: Install dependencies
+#         run: npm ci
 
-      - name: Run BDD Tests
-        run: npx cucumber-js
+#       - name: Run BDD Tests
+#         run: npx cucumber-js
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: cucumber-report
-          path: reports/
+#       - name: Upload Artifacts
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: cucumber-report
+#           path: reports/
 
 
 🧠 BDD Testing Methodology
@@ -163,7 +163,7 @@ Steps mapped in tests/cucumber/steps/
 
 🧑‍💻 Author
 Jinto Jose
-QA Automation Engineer (JavaScript | Playwright | WebDriverIO | Cucumber)
+QA Automation Engineer (JavaScript | Playwright | WebDriverIO | Cucumber|BDD)
 
 🌐 GitHub
 📬 Open to collaboration & feedback!
