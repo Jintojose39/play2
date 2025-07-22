@@ -4,38 +4,34 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-tests:
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
     steps:
-      # Step 1: Checkout your repository code
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      # Step 2: Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # You can change this to match your project
+          node-version: 'lts/*'
 
-      # Step 3: Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # Step 4: Install Playwright and dependencies
+      # ✅ Ensures Playwright CLI is available (must install this if you use npx playwright)
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # Step 5: Run Cucumber tests
-      - name: Run Playwright Cucumber Tests
+      - name: Run Cucumber Tests
         run: npm run test
 
-      # Step 6: Generate HTML report (assuming `npm run report` does this)
       - name: Generate HTML Report
         run: npm run report
 
-      # Step 7: Upload the report to GitHub artifacts
       - name: Upload Cucumber HTML Report
         if: always()
         uses: actions/upload-artifact@v4
