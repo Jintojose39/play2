@@ -1,0 +1,42 @@
+name: API Tests Pipeline
+
+trigger:
+  - main
+
+pool:
+  vmImage: 'windows-latest'
+
+jobs:
+  - job: APITests
+    displayName: 'API Tests with Reports'
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '18.x'
+        displayName: 'Install Node.js'
+
+      - task: PowerShell@2
+        displayName: 'Install dependencies'
+        inputs:
+          targetType: 'inline'
+          script: 'npm ci'
+
+      - task: PowerShell@2
+        displayName: 'Run API tests'
+        inputs:
+          targetType: 'inline'
+          script: 'npm run test:api'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Playwright Report'
+        condition: succeededOrFailed()
+        inputs:
+          pathToPublish: '$(System.DefaultWorkingDirectory)/playwright-report'
+          artifactName: 'Playwright HTML Report'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Test Results'
+        condition: succeededOrFailed()
+        inputs:
+          pathToPublish: '$(System.DefaultWorkingDirectory)/test-results'
+          artifactName: 'Test Results'

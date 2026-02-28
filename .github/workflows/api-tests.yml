@@ -1,0 +1,80 @@
+name: API Tests Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  api-tests:
+    name: API Tests with Reports
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Newman
+        run: npm install -g newman newman-reporter-html
+
+      - name: Run API tests with Playwright
+        run: npm run test:api
+
+      - name: Run Newman API Collection Tests
+        if: always()
+        run: |
+          newman run postman-collection.json \
+            -r json,html \
+            --reporter-json-export newman-report.json \
+            --reporter-html-export newman-report.html
+        continue-on-error: true
+
+      - name: Generate Playwright Report
+        if: always()
+        run: npx playwright show-report
+
+      - name: Upload Playwright Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Playwright HTML Report
+          path: playwright-report/
+
+      - name: Upload Newman HTML Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Newman HTML Report
+          path: newman-report.html
+        continue-on-error: true
+
+      - name: Upload Newman JSON Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Newman JSON Report
+          path: newman-report.json
+        continue-on-error: true
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test Results
+          path: test-results/
+
+      - name: Upload Cucumber Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Cucumber Report
+          path: reports/
