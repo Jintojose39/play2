@@ -3,6 +3,9 @@ import { expect } from "@playwright/test";
 import env from "../../testData/env.json" assert { type: "json" };
 import loginCredentials from "../../testData/loginCredentials.json" assert { type: "json" };
 import testData from "../../testData/testData.json" assert { type: "json" };
+import dotenv from "dotenv";
+
+dotenv.config();
 
 setDefaultTimeout(60 * 1000);
 
@@ -19,7 +22,7 @@ Given(
         loginCredentials.userName,
         loginCredentials.password
       );
-    await expect(this.page).toHaveURL(testData.sauceDemoUrl);
+    await expect(this.page).toHaveURL(process.env.INVENTORY_URL);
   }
 );
 

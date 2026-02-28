@@ -3,6 +3,9 @@ import { POManager } from "../utils/POManager.js";
 import env from "../testData/env.json" assert { type: "json" };
 import loginCredentials from "../testData/loginCredentials.json" assert { type: "json" };
 import testData from "../testData/testData.json" assert { type: "json" };
+import dotenv from "dotenv";
+
+dotenv.config();
 
 test.describe.serial("SauceDemo Order E2E Flow", () => {
   let browser;
@@ -26,7 +29,7 @@ test.describe.serial("SauceDemo Order E2E Flow", () => {
 
   test(`Add  "${testData.productName}" product to cart`, async () => {
     await test.step("Login to Sauce Demo Application and validate the url", async () => {
-      await expect(page).toHaveURL(testData.sauceDemoUrl);
+      await expect(page).toHaveURL(process.env.INVENTORY_URL);
     });
     await test.step(`Click on Add to cart button`, async () => {
       await po.getCommonPage().click(po.getCartPage().productClick);

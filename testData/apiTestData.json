@@ -1,0 +1,59 @@
+{
+  "baseUrl": "https://reqres.in/api",
+  "endpoints": {
+    "users": "/users",
+    "singleUser": "/users/1",
+    "updateUser": "/users/2",
+    "updateUser3": "/users/3",
+    "updateUser4": "/users/4",
+    "deleteUser": "/users/2",
+    "deleteNonExistentUser": "/users/9999",
+    "paginatedUsers": "/users?page=1",
+    "paginatedPage2": "/users?page=2"
+  },
+  "headers": {
+    "default": {
+      "accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "withApiKey": {
+      "accept": "application/json",
+      "x-api-key": "reqres_1cc6cb9c7c9f48fb95bd2a91974bf946"
+    }
+  },
+  "testData": {
+    "postUser": {
+      "name": "morpheus",
+      "job": "leader"
+    },
+    "postUserEngineer": {
+      "name": "john",
+      "job": "engineer"
+    },
+    "postUserTest": {
+      "name": "test"
+    },
+    "postUserTester": {
+      "name": "testUser",
+      "job": "tester"
+    },
+    "putUser": {
+      "name": "morpheus",
+      "job": "zion resident"
+    },
+    "putUserUpdated": {
+      "name": "updatedName",
+      "job": "QA Engineer"
+    },
+    "patchUser": {
+      "job": "DevOps"
+    }
+  },
+  "expectedResponses": {
+    "successGet": 200,
+    "successCreate": 201,
+    "successUpdate": 200,
+    "successDelete": 204,
+    "notFound": 404
+  }
+}

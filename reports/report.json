@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 926400
+              "duration": 2106899
             }
           },
           {
@@ -23,11 +23,11 @@
             "line": 5,
             "name": "the user navigates to the home page with \"standard_user\"",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:17"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:12"
             },
             "result": {
               "status": "passed",
-              "duration": 4555935599
+              "duration": 5479667900
             }
           },
           {
@@ -36,11 +36,11 @@
             "line": 6,
             "name": "the user adds \"Sauce Labs Backpack\" to the cart",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:25"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:26"
             },
             "result": {
               "status": "passed",
-              "duration": 114024000
+              "duration": 214076699
             }
           },
           {
@@ -49,11 +49,11 @@
             "line": 7,
             "name": "the cart count should be \"1\"",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:31"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:32"
             },
             "result": {
               "status": "passed",
-              "duration": 3918900
+              "duration": 13492099
             }
           },
           {
@@ -61,7 +61,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 150500
+              "duration": 470900
             }
           }
         ],
@@ -80,7 +80,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 58300
+              "duration": 211600
             }
           },
           {
@@ -89,11 +89,11 @@
             "line": 10,
             "name": "the user clicks on the cart badge",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:35"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:36"
             },
             "result": {
               "status": "passed",
-              "duration": 60157900
+              "duration": 68905800
             }
           },
           {
@@ -102,11 +102,11 @@
             "line": 11,
             "name": "the user proceeds to checkout",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:39"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:40"
             },
             "result": {
               "status": "passed",
-              "duration": 55837599
+              "duration": 104633099
             }
           },
           {
@@ -115,11 +115,11 @@
             "line": 12,
             "name": "the checkout title should be \"Checkout: Your Information\"",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:44"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:45"
             },
             "result": {
               "status": "passed",
-              "duration": 6258600
+              "duration": 8228199
             }
           },
           {
@@ -127,7 +127,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 228399
+              "duration": 351800
             }
           }
         ],
@@ -146,7 +146,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 159899
+              "duration": 575799
             }
           },
           {
@@ -178,11 +178,11 @@
             "line": 15,
             "name": "the user enters the shipping details",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:48"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:51"
             },
             "result": {
               "status": "passed",
-              "duration": 149297899
+              "duration": 127219100
             }
           },
           {
@@ -191,11 +191,11 @@
             "line": 19,
             "name": "the product price should match the selected item",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:55"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:58"
             },
             "result": {
               "status": "passed",
-              "duration": 4618199
+              "duration": 9240599
             }
           },
           {
@@ -203,7 +203,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 276900
+              "duration": 827700
             }
           }
         ],
@@ -222,7 +222,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 94500
+              "duration": 207199
             }
           },
           {
@@ -231,11 +231,11 @@
             "line": 22,
             "name": "the user clicks on the finish button",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:59"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:64"
             },
             "result": {
               "status": "passed",
-              "duration": 53395499
+              "duration": 84663500
             }
           },
           {
@@ -244,11 +244,11 @@
             "line": 23,
             "name": "the user should see the confirmation message \"Thank you for your order!\"",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:63"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:68"
             },
             "result": {
               "status": "passed",
-              "duration": 3971999
+              "duration": 7280699
             }
           },
           {
@@ -256,7 +256,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 73199
+              "duration": 619500
             }
           }
         ],
@@ -275,7 +275,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 71300
+              "duration": 139300
             }
           },
           {
@@ -284,11 +284,11 @@
             "line": 26,
             "name": "the user logs out",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:67"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:77"
             },
             "result": {
               "status": "passed",
-              "duration": 968091500
+              "duration": 1021541499
             }
           },
           {
@@ -297,11 +297,11 @@
             "line": 27,
             "name": "the user should be navigated to the login page",
             "match": {
-              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:71"
+              "location": "file:\\C:\\Users\\JintoJose\\play2\\features\\step_defintions\\step.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 4223199
+              "duration": 4361199
             }
           },
           {
@@ -309,7 +309,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 156200
+              "duration": 72700
             }
           }
         ],

@@ -1,10 +1,103 @@
 {
-     "sauceDemoUrl":"https://www.saucedemo.com/inventory.html",
      "productName":"Sauce Labs Bike Light",
      "productCount":"1",
      "CheckoutTitle" :"Checkout: Your Information",
      "firstName":"jinto",
      "lastName":"jose",
      "postalCode":"12455",
-     "orderConfirmMessage":"Thank you for your order!"
+     "orderConfirmMessage":"Thank you for your order!",
+     "products": [
+          {
+               "name": "Sauce Labs Bike Light",
+               "price": "$9.99",
+               "description": "A red light that does nothing",
+               "quantity": 1
+          },
+          {
+               "name": "Sauce Labs Backpack",
+               "price": "$29.99",
+               "description": "Come on back, Jack. Shop the 'Sauce Labs Backpack' collection with free day shipping...",
+               "quantity": 2
+          },
+          {
+               "name": "Sauce Labs Bolt T-Shirt",
+               "price": "$15.99",
+               "description": "Get your testing superhero on with the Sauce Labs bolt T-shirt",
+               "quantity": 1
+          },
+          {
+               "name": "Sauce Labs Fleece Jacket",
+               "price": "$49.99",
+               "description": "It's not a polo shirt, but it's pretty close",
+               "quantity": 3
+          }
+     ],
+     "users": [
+          {
+               "firstName": "jinto",
+               "lastName": "jose",
+               "email": "jinto.jose@example.com",
+               "phone": "555-0123",
+               "postalCode": "12455"
+          },
+          {
+               "firstName": "John",
+               "lastName": "Smith",
+               "email": "john.smith@example.com",
+               "phone": "555-0124",
+               "postalCode": "54321"
+          },
+          {
+               "firstName": "Sarah",
+               "lastName": "Williams",
+               "email": "sarah.williams@example.com",
+               "phone": "555-0125",
+               "postalCode": "67890"
+          }
+     ],
+     "paymentMethods": [
+          {
+               "type": "credit_card",
+               "cardNumber": "4111111111111111",
+               "expiryDate": "12/25",
+               "cvv": "123"
+          },
+          {
+               "type": "credit_card",
+               "cardNumber": "5555555555554444",
+               "expiryDate": "06/26",
+               "cvv": "456"
+          }
+     ],
+     "addresses": [
+          {
+               "type": "shipping",
+               "street": "123 Main Street",
+               "city": "New York",
+               "state": "NY",
+               "postalCode": "12455",
+               "country": "USA"
+          },
+          {
+               "type": "billing",
+               "street": "456 Oak Avenue",
+               "city": "Los Angeles",
+               "state": "CA",
+               "postalCode": "54321",
+               "country": "USA"
+          }
+     ],
+     "errorMessages": {
+          "invalidEmail": "Email is invalid",
+          "requiredField": "This field is required",
+          "invalidZip": "Postal code must be 5 digits",
+          "paymentFailed": "Payment processing failed"
+     },
+     "pageUrls": {
+          "inventory": "https://www.saucedemo.com/inventory.html",
+          "cart": "https://www.saucedemo.com/cart.html",
+          "checkout": "https://www.saucedemo.com/checkout-step-one.html",
+          "checkoutStepTwo": "https://www.saucedemo.com/checkout-step-two.html",
+          "checkoutComplete": "https://www.saucedemo.com/checkout-complete.html"
+     }
 }

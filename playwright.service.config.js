@@ -14,3 +14,4 @@ export default defineConfig(
     reporter: [['list'], ['@azure/microsoft-playwright-testing/reporter']],
   }
 );
+
