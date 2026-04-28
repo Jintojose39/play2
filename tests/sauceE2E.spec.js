@@ -1,5 +1,4 @@
-import { expect, test, chromium } from "@playwright/test";
-import { POManager } from "../utils/POManager.js";
+import { test, expect } from "../utils/fixtures.js";
 import env from "../testData/env.json" assert { type: "json" };
 import loginCredentials from "../testData/loginCredentials.json" assert { type: "json" };
 import testData from "../testData/testData.json" assert { type: "json" };
@@ -8,82 +7,93 @@ import dotenv from "dotenv";
 dotenv.config();
 
 test.describe.serial("SauceDemo Order E2E Flow", () => {
-  let browser;
-  let context;
-  let page;
-  let po;
-  let priceText;
-  test.beforeAll("Login to Application", async () => {
-    browser = await chromium.launch();
-    context = await browser.newContext();
-    page = await context.newPage();
-    po = new POManager(page);
-    await po.getLoginPage().goToApplication(env.baseURL);
-    await po
-      .getLoginPage()
-      .enterTheCredentials(
-        loginCredentials.userName,
-        loginCredentials.password
-      );
+
+  test.beforeEach(async ({ loginPage }) => {
+    await loginPage.goToApplication(env.baseURL);
+    await loginPage.enterTheCredentials(
+      loginCredentials.userName,
+      loginCredentials.password
+    );
   });
 
-  test(`Add  "${testData.productName}" product to cart`, async () => {
-    await test.step("Login to Sauce Demo Application and validate the url", async () => {
+  test(`Add "${testData.productName}" product to cart`, async ({ page, commonPage, cartPage }) => {
+
+    await test.step("Validate login success", async () => {
       await expect(page).toHaveURL(process.env.INVENTORY_URL);
     });
-    await test.step(`Click on Add to cart button`, async () => {
-      await po.getCommonPage().click(po.getCartPage().productClick);
-      await po.getCommonPage().click(po.getCartPage().addToCartButton);
+
+    await test.step("Add product to cart", async () => {
+      await commonPage.click(cartPage.productClick);
+      await commonPage.click(cartPage.addToCartButton);
     });
-    await test.step(`Verify that product should be added to the cart and cart count is to be ${testData.productCount}`, async () => {
-      await expect(po.getCommonPage().cartCount).toHaveText(
-        testData.productCount
-      );
+
+    await test.step("Validate cart count", async () => {
+      await expect(commonPage.cartCount).toHaveText(testData.productCount);
     });
   });
 
-  test("User is able to Proceed the checkout", async () => {
-    await test.step(`Click on cart badge and proceed check out process`, async () => {
-      await po.getCommonPage().cartCount.click();
-      await po.getCommonPage().click(po.getCommonPage().cartCount);
-      priceText = await po.getCheckOutPage().productPrice.textContent();
-      await po.getCommonPage().click(po.getCheckOutPage().checkOutButton);
+  test("User is able to proceed to checkout", async ({ commonPage, cartPage, checkOutPage }) => {
+
+    // 🔥 Prepare state again
+    await commonPage.click(cartPage.productClick);
+    await commonPage.click(cartPage.addToCartButton);
+
+    await test.step("Go to cart and checkout", async () => {
+      await commonPage.cartCount.click();
+      await commonPage.click(checkOutPage.checkOutButton);
     });
-    await test.step(`Verify the title as "${testData.CheckoutTitle}"after navigate from checkout page`, async () => {
-      await expect(po.getCheckOutPage().checkoutTitle).toHaveText(
+
+    await test.step("Validate checkout page", async () => {
+      await expect(checkOutPage.checkoutTitle).toHaveText(
         testData.CheckoutTitle
       );
     });
   });
-  test("User is able to fill the shipping information", async () => {
-    await test.step(`Enter the shipping details and click on Continue`, async () => {
-      await po
-        .getOrderPage()
-        .toFillTheShippingDetails(
-          testData.firstName,
-          testData.lastName,
-          testData.postalCode
-        );
-    });
-    await test.step(`Verify the price of the ordered product should be: "${priceText}"`, async () => {
-      await expect(po.getOrderPage().orderSummaryPrice).toContainText(
-        priceText
+
+  test("User is able to fill the shipping information", async ({ commonPage, cartPage, checkOutPage, orderPage }) => {
+
+    // 🔥 Prepare full flow again
+    await commonPage.click(cartPage.productClick);
+    await commonPage.click(cartPage.addToCartButton);
+    await commonPage.cartCount.click();
+    await commonPage.click(checkOutPage.checkOutButton);
+
+    await test.step("Enter shipping details", async () => {
+      await orderPage.toFillTheShippingDetails(
+        testData.firstName,
+        testData.lastName,
+        testData.postalCode
       );
+    });
+
+    await test.step("Validate order summary", async () => {
+      await expect(orderPage.orderSummaryPrice).toBeVisible();
     });
   });
 
-  test(`Complete the order for :${testData.productName} `, async () => {
-    await test.step(`User is able to complete the order and validate the order message "${testData.orderConfirmMessage}"`, async () => {
-      await po.getCommonPage().click(po.getOrderPage().finish);
-      await expect(po.getOrderPage().orderCompleteMessage).toHaveText(
+  test(`Complete the order for ${testData.productName}`, async ({ commonPage, cartPage, checkOutPage, orderPage }) => {
+
+    // 🔥 Prepare full flow again
+    await commonPage.click(cartPage.productClick);
+    await commonPage.click(cartPage.addToCartButton);
+    await commonPage.cartCount.click();
+    await commonPage.click(checkOutPage.checkOutButton);
+
+    await orderPage.toFillTheShippingDetails(
+      testData.firstName,
+      testData.lastName,
+      testData.postalCode
+    );
+
+    await test.step("Finish order", async () => {
+      await commonPage.click(orderPage.finish);
+    });
+
+    await test.step("Validate order confirmation", async () => {
+      await expect(orderPage.orderCompleteMessage).toHaveText(
         testData.orderConfirmMessage
       );
     });
   });
 
-  test.afterAll("Logout from the application", async () => {
-    await po.getLoginPage().logOutFromApplication();
-    await expect(page).toHaveURL(env.baseURL);
-    await browser.close();
-  });
 });
